@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – War Inc.: Idle Military Tycoon | Valley Sun Games</title>
+  <meta name="description" content="Privacy Policy for War Inc.: Idle Military Tycoon by Valley Sun Games. Learn how we collect, use, and protect your information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0f1a;
+      --surface: #131929;
+      --border: #1e2d45;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59,130,246,0.15);
+      --text-primary: #e8edf5;
+      --text-secondary: #8a9bb8;
+      --text-muted: #4a5a78;
+      --green: #22c55e;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #0d1b2e 0%, #0b1622 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.25rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .header-inner a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      transition: opacity .2s;
+    }
+    .header-inner a:hover { opacity: 1; }
+    .header-inner span { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #0d1b2e 0%, #111827 60%, #0b1622 100%);
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(59,130,246,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-glow);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Main Layout ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── Info Cards Row ── */
+    .meta-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .meta-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+    }
+    .meta-card .label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .meta-card .value {
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ── Section ── */
+    section { margin-bottom: 2.75rem; }
+    section h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    section h2 .num {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    p { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 0.9rem; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      padding-left: 1.4rem;
+      margin-bottom: 0.9rem;
+    }
+    li { margin-bottom: 0.45rem; }
+
+    /* ── Callout Box ── */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+    }
+    .callout.green { border-left-color: var(--green); }
+    .callout p { margin: 0; }
+
+    /* ── Link ── */
+    a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
+    a:hover { opacity: 0.8; text-decoration: underline; }
+
+    /* ── Contact Card ── */
+    .contact-card {
+      background: linear-gradient(135deg, #131929, #0f1e30);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-align: center;
+    }
+    .contact-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .contact-card p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; }
+    .contact-card .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: opacity .2s, transform .2s;
+      text-decoration: none;
+    }
+    .contact-card .email-btn:hover { opacity: 0.9; transform: translateY(-1px); text-decoration: none; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--text-muted); }
+
+    @media (max-width: 600px) {
+      .meta-cards { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html">← Valley Sun Games</a>
+    <span>/</span>
+    <span>Privacy Policy</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">📄 Legal Document</div>
+  <h1>Privacy Policy</h1>
+  <p>War Inc.: Idle Military Tycoon &nbsp;·&nbsp; Valley Sun Games</p>
+</div>
+
+<main>
+
+  <div class="meta-cards">
+    <div class="meta-card">
+      <div class="label">App Name</div>
+      <div class="value">War Inc.: Idle Military Tycoon</div>
+    </div>
+    <div class="meta-card">
+      <div class="label">Developer</div>
+      <div class="value">Valley Sun Games</div>
+    </div>
+    <div class="meta-card">
+      <div class="label">Last Updated</div>
+      <div class="value">June 24, 2026</div>
+    </div>
+    <div class="meta-card">
+      <div class="label">Contact</div>
+      <div class="value"><a href="mailto:raeedalaofi@gmail.com">raeedalaofi@gmail.com</a></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>This Privacy Policy explains how <strong>Valley Sun Games</strong> ("we", "us", or "our") collects, uses, and protects your information when you use <strong>War Inc.: Idle Military Tycoon</strong> (the "Game"). By playing the Game, you agree to the practices described below.</p>
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <h2><span class="num">1</span> Information We Collect</h2>
+    <p>We may collect the following categories of information when you play the Game:</p>
+    <ul>
+      <li><strong>Device Information:</strong> Device model, operating system version, unique device identifiers (e.g., Android Advertising ID), and network information.</li>
+      <li><strong>Gameplay Data:</strong> Game progress, in-game activity, session duration, and feature usage statistics.</li>
+      <li><strong>Technical Logs:</strong> Crash reports, error logs, and performance data used to improve stability.</li>
+      <li><strong>Advertising Data:</strong> Ad interaction data collected by our third-party advertising partners for serving relevant ads.</li>
+      <li><strong>Purchase Information:</strong> If you make in-app purchases, transaction data is processed by Google Play. We do not store your payment card details.</li>
+    </ul>
+    <p>We do <strong>not</strong> knowingly collect names, email addresses, or other personally identifiable information directly from players unless voluntarily provided (e.g., support requests).</p>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2><span class="num">2</span> How We Use Your Information</h2>
+    <p>We use the collected information for the following purposes:</p>
+    <ul>
+      <li>To operate, maintain, and improve the Game and its features.</li>
+      <li>To serve personalized and non-personalized advertisements via Google AdMob.</li>
+      <li>To analyze gameplay patterns and fix bugs or technical issues.</li>
+      <li>To comply with legal obligations and enforce our Terms of Service.</li>
+      <li>To respond to player support requests sent via email.</li>
+    </ul>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2><span class="num">3</span> Third-Party Services</h2>
+    <p>The Game integrates the following third-party services, each with their own privacy policies:</p>
+    <ul>
+      <li><strong>Google AdMob</strong> – for in-game advertising. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      <li><strong>Google Play Services</strong> – for leaderboards, achievements, and in-app purchases. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      <li><strong>Unity Analytics / Unity Ads</strong> (if applicable) – for analytics and advertising.</li>
+      <li><strong>Firebase (Google)</strong> – for crash reporting and analytics. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy</a></li>
+    </ul>
+    <p>We recommend reviewing the privacy policies of these third parties, as we do not control their data practices.</p>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <h2><span class="num">4</span> Advertising &amp; Ad ID</h2>
+    <p>We use Google AdMob to display advertisements in the Game. AdMob may collect and use your Advertising ID (a resettable, anonymous identifier) to deliver personalized ads based on your interests.</p>
+    <div class="callout green">
+      <p>You can opt out of personalized ads at any time by going to your device's <strong>Settings → Google → Ads → Opt out of Ads Personalization</strong> (Android). You can also reset your Advertising ID from the same menu.</p>
+    </div>
+    <p>Even if you opt out of personalized advertising, you will still see non-personalized ads. Ad revenue helps us keep the Game free to play.</p>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <h2><span class="num">5</span> Children's Privacy (COPPA)</h2>
+    <p>The Game is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="mailto:raeedalaofi@gmail.com">raeedalaofi@gmail.com</a> and we will promptly delete such information.</p>
+    <p>If the Game is made available in regions where a different age threshold applies (e.g., 16 in certain EU countries), we will comply with the applicable local laws.</p>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <h2><span class="num">6</span> Data Retention</h2>
+    <p>We retain collected data only for as long as necessary to fulfil the purposes outlined in this Policy or as required by law. Game progress and analytics data are typically retained for no longer than 24 months. You may request deletion of your data at any time by contacting us.</p>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <h2><span class="num">7</span> Data Security</h2>
+    <p>We implement appropriate technical and organisational measures to protect your information against unauthorised access, alteration, disclosure, or destruction. However, no method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security.</p>
+  </section>
+
+  <!-- 8 -->
+  <section>
+    <h2><span class="num">8</span> Your Rights</h2>
+    <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Right of Access:</strong> Request a copy of the personal data we hold about you.</li>
+      <li><strong>Right to Rectification:</strong> Request correction of inaccurate data.</li>
+      <li><strong>Right to Erasure:</strong> Request deletion of your personal data.</li>
+      <li><strong>Right to Opt-Out:</strong> Opt out of personalised advertising as described in Section 4.</li>
+      <li><strong>Right to Data Portability:</strong> Receive your data in a structured, machine-readable format.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us using the details in Section 10 below.</p>
+  </section>
+
+  <!-- 9 -->
+  <section>
+    <h2><span class="num">9</span> Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in the Game, technology, or applicable law. When we make significant changes, we will update the "Last Updated" date at the top of this page. Continued use of the Game after any changes constitutes acceptance of the revised Policy. We encourage you to review this page periodically.</p>
+  </section>
+
+  <!-- 10 -->
+  <section>
+    <h2><span class="num">10</span> Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your data, please reach out to us:</p>
+    <div class="contact-card">
+      <h3>Valley Sun Games – Privacy Team</h3>
+      <p>We typically respond within 3–5 business days.</p>
+      <a href="mailto:raeedalaofi@gmail.com" class="email-btn">
+        ✉ raeedalaofi@gmail.com
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Valley Sun Games · <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>

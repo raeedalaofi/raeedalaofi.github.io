@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valley Sun Games – Mobile Game Developer</title>
+  <meta name="description" content="Valley Sun Games – Indie mobile game studio. Play War Inc.: Idle Military Tycoon on Google Play. Command your base, build your army, conquer the world." />
+  <meta property="og:title" content="Valley Sun Games" />
+  <meta property="og:description" content="Indie mobile game studio behind War Inc.: Idle Military Tycoon on Google Play." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #060a12;
+      --surface: #0d1520;
+      --surface2: #111e30;
+      --border: #1a2a40;
+      --accent: #3b82f6;
+      --accent2: #f59e0b;
+      --accent-glow: rgba(59,130,246,0.15);
+      --gold-glow: rgba(245,158,11,0.15);
+      --text-primary: #eef2f8;
+      --text-secondary: #8a9bb8;
+      --text-muted: #3d5070;
+      --green: #22c55e;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+      background: rgba(6,10,18,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 7rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59,130,246,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(245,158,11,0.06) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    /* animated grid lines */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridPan 30s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes gridPan { from { transform: translateY(0); } to { transform: translateY(60px); } }
+
+    .hero-content {
+      max-width: 720px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .studio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.25);
+      color: var(--accent2);
+      border-radius: 30px;
+      padding: 0.35rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .studio-badge::before { content: '⚡'; }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero h1 .line2 {
+      background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 40%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 24px rgba(59,130,246,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(59,130,246,0.5); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: transparent;
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .btn-secondary:hover { background: var(--surface); border-color: #2a3d58; transform: translateY(-2px); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── PROMO IMAGE ─── */
+    .game-showcase {
+      padding: 2rem 1.5rem 5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .showcase-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 60px rgba(59,130,246,0.08);
+      position: relative;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+    .showcase-frame img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .showcase-glow {
+      position: absolute;
+      inset: -1px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, transparent 50%, rgba(245,158,11,0.08) 100%);
+      pointer-events: none;
+    }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      max-width: 700px;
+      margin: 0 auto 5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      padding: 1.4rem 1rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ─── FEATURES ─── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--accent-glow);
+      border: 1px solid rgba(59,130,246,0.2);
+      color: var(--accent);
+      border-radius: 20px;
+      padding: 0.25rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .section-header p {
+      color: var(--text-secondary);
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 6rem;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color .25s, transform .25s;
+    }
+    .feature-card:hover {
+      border-color: rgba(59,130,246,0.35);
+      transform: translateY(-3px);
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(59,130,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .feature-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .feature-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ─── DOWNLOAD CTA ─── */
+    .download-section {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      margin-bottom: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .download-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .download-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .download-section p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .gplay-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #fff;
+      color: #111;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .gplay-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+    .gplay-btn img { width: 22px; height: 22px; }
+
+    /* ─── ABOUT ─── */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+    .about-text h2 {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .about-text p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+    .about-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .about-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 6px;
+      padding: 0.4rem 0.85rem;
+      background: var(--accent-glow);
+      transition: background .2s, border-color .2s;
+    }
+    .about-link:hover { background: rgba(59,130,246,0.2); border-color: rgba(59,130,246,0.5); text-decoration: none; }
+
+    .about-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row .key { color: var(--text-muted); }
+    .info-row .val { color: var(--text-primary); font-weight: 500; }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: var(--green);
+      border-radius: 20px;
+      padding: 0.2rem 0.65rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-left { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-left strong { color: var(--text-secondary); }
+    .footer-right {
+      display: flex;
+      gap: 1.25rem;
+    }
+    .footer-right a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-right a:hover { color: var(--accent); }
+
+    /* ─── WRAPPER ─── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .about-section { grid-template-columns: 1fr; }
+      .stats-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Valley<span>Sun</span> Games</div>
+  <ul class="nav-links">
+    <li><a href="#game">Game</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="studio-badge">Valley Sun Games</div>
+    <h1>
+      Command Your Army.<br>
+      <span class="line2">Build Your Empire.</span>
+    </h1>
+    <p class="hero-sub">The ultimate idle military tycoon experience. Grow your base, deploy your troops, and conquer in <strong>War Inc.: Idle Military Tycoon</strong></p>
+    <div class="hero-cta">
+      <a href="https://play.google.com/store/apps/details?id=com.RaeedAlaofi.Idlemilitarymergebasetycoon&pli=1"
+         target="_blank" rel="noopener" class="btn-primary" id="cta-play">
+        ▶ Play on Google Play
+      </a>
+      <a href="#features" class="btn-secondary" id="cta-features">
+        Explore Features
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GAME SHOWCASE -->
+<div class="container" id="game">
+  <div class="game-showcase" style="padding-left:0;padding-right:0">
+    <div class="showcase-frame">
+      <img src="war_inc_promo.png" alt="War Inc.: Idle Military Tycoon – Gameplay Screenshot" width="960" height="960" />
+      <div class="showcase-glow"></div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="container">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">FREE<span>!</span></div>
+      <div class="stat-label">To Play</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Upgrades</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">⭐<span>5</span></div>
+      <div class="stat-label">Google Play</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span>24</span>/7</div>
+      <div class="stat-label">Idle Income</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="container" id="features">
+  <div class="section-header">
+    <div class="section-tag">🎮 Gameplay</div>
+    <h2>Why Generals Choose War Inc.</h2>
+    <p>A deep military idle experience built for strategy fans</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🏗️</div>
+      <h3>Build Your Base</h3>
+      <p>Construct and upgrade dozens of military buildings. Expand your territory and increase your production power.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚔️</div>
+      <h3>Deploy Your Army</h3>
+      <p>Train soldiers, tanks, helicopters and elite units. Deploy them strategically to dominate the battlefield.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💰</div>
+      <h3>Idle Tycoon Economy</h3>
+      <p>Earn resources even when you're offline. Return to a thriving military empire ready for your next move.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔬</div>
+      <h3>Research & Merge</h3>
+      <p>Merge units to unlock powerful variants. Research advanced technologies that give you the tactical edge.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>Global Conquest</h3>
+      <p>Campaign across multiple theatres of war. Each region presents unique challenges and rich rewards.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3>Compete & Rank</h3>
+      <p>Climb global leaderboards. Show other commanders who the real supreme strategist is.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD CTA -->
+<div class="container">
+  <div class="download-section" id="download">
+    <h2>Ready to Command? 🫡</h2>
+    <p>Download War Inc.: Idle Military Tycoon for free on Google Play and start building your military empire today.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.RaeedAlaofi.Idlemilitarymergebasetycoon&pli=1"
+       target="_blank" rel="noopener" class="gplay-btn" id="cta-download">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.18 1.5 13.35 12 3.18 22.5c-.3-.15-.48-.45-.48-.84V2.34c0-.39.18-.69.48-.84ZM20.52 10.35l-2.67-1.53L14.88 12l2.97 2.97 2.67-1.53a1.5 1.5 0 0 0 0-3.09ZM4.5 2.79l10.24 5.94L12 11.47 4.5 2.79Zm0 18.42 7.5-8.68 2.74 2.74L4.5 21.21Z" fill="#34A853"/>
+      </svg>
+      Get it on Google Play
+    </a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="container" id="about">
+  <div class="about-section">
+    <div class="about-text">
+      <h2>About Valley Sun Games</h2>
+      <p>We are an independent mobile game studio passionate about creating deep, rewarding strategy and idle experiences that players can enjoy anytime, anywhere.</p>
+      <p>War Inc.: Idle Military Tycoon is our flagship title, combining the addictive loop of idle games with the depth of military strategy — available free on Google Play.</p>
+      <div class="about-links">
+        <a href="https://play.google.com/store/apps/dev?id=5102591623727647429"
+           target="_blank" rel="noopener" class="about-link" id="link-developer">Developer Page</a>
+        <a href="https://play.google.com/store/apps/details?id=com.RaeedAlaofi.Idlemilitarymergebasetycoon&pli=1"
+           target="_blank" rel="noopener" class="about-link" id="link-game">Our Game</a>
+        <a href="privacy.html" class="about-link" id="link-privacy">Privacy Policy</a>
+        <a href="mailto:raeedalaofi@gmail.com" class="about-link" id="link-contact">Contact Us</a>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="info-row">
+        <span class="key">Studio</span>
+        <span class="val">Valley Sun Games</span>
+      </div>
+      <div class="info-row">
+        <span class="key">Game</span>
+        <span class="val">War Inc.: Idle Military Tycoon</span>
+      </div>
+      <div class="info-row">
+        <span class="key">Platform</span>
+        <span class="val">Android (Google Play)</span>
+      </div>
+      <div class="info-row">
+        <span class="key">Genre</span>
+        <span class="val">Idle Strategy / Tycoon</span>
+      </div>
+      <div class="info-row">
+        <span class="key">Price</span>
+        <span class="val">Free to Play</span>
+      </div>
+      <div class="info-row">
+        <span class="key">Status</span>
+        <span class="val"><span class="badge-pill">● Live Now</span></span>
+      </div>
+      <div class="info-row">
+        <span class="key">Contact</span>
+        <span class="val"><a href="mailto:raeedalaofi@gmail.com" style="font-size:0.82rem">raeedalaofi@gmail.com</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      &copy; 2026 <strong>Valley Sun Games</strong>. All rights reserved.
+    </div>
+    <div class="footer-right">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:raeedalaofi@gmail.com">Contact</a>
+      <a href="https://play.google.com/store/apps/dev?id=5102591623727647429" target="_blank" rel="noopener">Google Play</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
